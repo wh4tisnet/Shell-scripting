@@ -1,31 +1,33 @@
 #!/bin/bash
 
-read -p "Introduce los datos: " NUM1
-read -p "Introduce los datos: " NUM1
+cat << EOF
+# Operación a realizar
+Una opción:
+    1. Sumar
+    2. Restar
+    3. Multiplicar
+    4. Dividir
+    5. Final del programa
+EOF
 
-read -p "Introduce la operación (SUMA, RESTA, MULTIPLICACION, DIVISION, FIN DEL PROGRAMA): " OPERACION
+# Introduce los valores para la operación
+echo "Introduce el valor de NUM1:"
+read n1
+echo "Introduce el valor de NUM2:"
+read n2
 
-case $OPERACION in 
+SUM=$(( n1 + n2 ))
+RES=$(( n1 - n2 ))
+MUL=$(( n1 * n2 ))
+DIV=$(( n1 / n2 ))
 
-"SUMA")
-echo "Este es el resultado de la suma: $((NUM1 + NUM2))"
-;;
+echo "Introduce la operación a realizar (1, 2, 3, 4 o 5):"
+read OPERACION
 
-"RESTA")
-echo "Este es el resultado de la resta: $((NUM1 - NUM2))"
-;;
-
-"MULTIPLICACION")
-echo "Este es el resultado de la multiplicacion: $((NUM1 * NUM2))"
-;;
-
-"DIVISION")
-echo "Este es el resultado de la division: $((NUM1 / NUM2))"
-;;
-
-"FIN DEL PROGRAMA")
-echo "FIN DEL PROGRAMA"
-exit 0
-;;
-
+case $OPERACION in
+    1) echo "Este es el resultado de la suma: ${SUM}" ;;
+    2) echo "Este es el resultado de la resta: ${RES}" ;;
+    3) echo "Este es el resultado de la multiplicación: ${MUL}" ;;
+    4) echo "Este es el resultado de la división: ${DIV}" ;;
+    5) exit 0 ;;
 esac
